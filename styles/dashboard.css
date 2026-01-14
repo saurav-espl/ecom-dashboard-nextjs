@@ -1,0 +1,608 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+html,
+body {
+  max-width: 100vw;
+  /* overflow-x: hidden; */
+  font-family: "Poppins", sans-serif !important;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 770px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+.form_box {
+  max-width: 500px;
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+}
+
+.inputBox .inputField {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 30px;
+  width: 450px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.edit_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 30px;
+  width: 720px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.edd {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 10px;
+}
+
+::placeholder {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.form button {
+  align-self: flex-end;
+}
+
+.flex-column>label {
+  color: #151717;
+  font-weight: 600;
+}
+
+.inputForm {
+  border: 1.5px solid #ecedec;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.input {
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 85%;
+  height: 100%;
+  font-family: "Poppins";
+}
+
+.input:focus {
+  outline: none;
+}
+
+.inputForm:focus-within {
+  border: 1.5px solid #2d79f3;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.flex-row>div>label {
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
+}
+
+.span {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #2d79f3;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button-submit {
+  margin: 20px 0 10px 0;
+  background-color: #151717;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.button-submit:hover {
+  background-color: #252727;
+}
+
+.p {
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  gap: 10px;
+  border: 1px solid #ededef;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.btn:hover {
+  border: 1px solid #2d79f3;
+}
+
+.form_container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HeaderCol {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.LinkDiv ul {
+  display: flex;
+}
+
+.LinkDiv ul li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.LinkDiv ul li a {
+  color: #fff;
+}
+
+.SearchDiv {
+  position: relative;
+}
+
+.SearchDiv input {
+  height: 35px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid;
+  position: relative;
+}
+
+button.search {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+
+.sidebar {
+  width: 18%;
+  background: #000000;
+  min-height: 100vh;
+  position: fixed;
+}
+
+.main-content {
+  width: 82%;
+  float: right;
+  min-height: 100vh;
+}
+
+.TopHeader {
+  padding: 15px 30px;
+  background-color: #000000;
+}
+
+.dashContent {
+  padding: 15px 30px;
+}
+
+.logo {
+  height: 74px;
+  background: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+aside.sidebar nav {
+  padding: 20px 30px;
+}
+
+.nav-item {
+  margin: 10px 0;
+  list-style-type: none;
+}
+
+.nav-item a svg, .nav-item button svg {
+  margin-right: 10px;
+}
+
+.inputOtpForm .otp {
+  width: 18%;
+  height: 50px;
+  margin: 0 12px;
+  border: 1px solid black;
+  border-radius: 7px;
+  font-family: "Poppins";
+  padding: 15px;
+  font-size: 20px;
+}
+
+.inputOtpForm {
+  margin-top: 20px;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.page-title {
+  margin-bottom: 20px;
+}
+
+.nav-item a {
+  color: #fff;
+  font-size: 15px;
+}
+
+.LogoDiv {
+  color: #fff;
+}
+
+.ProfileDiv {
+  position: relative;
+}
+
+.ProfileDropdown {
+  position: absolute;
+  height: auto;
+  width: auto;
+  right: -30px;
+  top: 36px;
+  background: #fff;
+  padding: 5px 5px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #cbcbcb;
+}
+
+.ProfileDropdown ul li:hover {
+  background: #efefef;
+}
+
+.ProfileDropdown ul li {
+  list-style-type: none;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+.ProfileDropdown ul li a {
+  font-size: 14px;
+  color: #000;
+}
+
+.userInfo {
+  padding: 0 10px 8px;
+  border-bottom: 1px solid;
+}
+
+.userInfo p {
+  font-size: 14px;
+  font-weight: 600;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+}
+
+.dropdown-content.show {
+  display: block;
+  padding: 5px 20px;
+}
+
+.dropdown-content.show div {
+  margin: 5px 0;
+}
+
+.parent-link {
+  cursor: pointer;
+}
+
+.parent-link:hover {
+  color: #ffffff;
+}
+
+.parent-link .svg-inline--fa {
+  margin-right: 10px;
+}
+
+.parent-link::after {
+  position: absolute;
+  content: ">";
+  left: 170px;
+}
+
+.sidebarToggle {
+  display: none;
+}
+
+.sidebar.open {
+  left: 0;
+  display: block !important;
+  z-index: 9;
+}
+
+button.close-button {
+  z-index: 99;
+  position: absolute;
+  top: 4px;
+  right: -10px;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #fff;
+  padding: 0;
+  border-radius: 50px;
+  background: #fff;
+}
+
+.close-button {
+  display: none;
+}
+
+.pageTitle {
+  text-align: center;
+}
+
+/* datatable css */
+.dt-layout-table .dt-layout-cell {
+  overflow-x: auto;
+}
+
+.dt-layout-row {
+  display: flex;
+  justify-content: space-between;
+  background: black;
+  color: #fff;
+  padding: 15px 15px;
+}
+
+.dt-layout-table {
+  display: block;
+  background: none;
+  color: inherit;
+  padding: 25px 0;
+}
+
+button.dt-paging-button {
+  border: 1px solid rgb(255, 255, 255);
+  background: black;
+  color: #fff;
+  margin: 0 3px;
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif !important;
+}
+
+div#example_wrapper {
+  border: 1px solid black;
+}
+
+tbody tr td {
+  border: 1px solid black;
+  padding: 0 5px;
+}
+
+thead tr th {
+  border: 1px solid;
+}
+
+select#dt-length-0 {
+  height: 30px;
+  width: 50px;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Poppins';
+}
+
+input#dt-search-0 {
+  height: 30px;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Poppins';
+  margin-left: 7px;
+}
+
+.Draft {
+  color: black;
+  font-weight: 600;
+  background: #fff900;
+  border-color: #fff900;
+}
+
+.Publish {
+  color: black;
+  font-weight: 600;
+  background: #00e300;
+  border-color: #00e300;
+}
+
+.success-payment {
+  color: black;
+  font-weight: 600;
+  background: #00e300;
+  border-color: #00e300;
+}
+
+.pending-payment {
+  color: black;
+  font-weight: 600;
+  background: #fff900;
+  border-color: #fff900;
+}
+
+.fulfilled {
+  color: black;
+  font-weight: 600;
+  background: #00e300;
+  border-color: #00e300;
+}
+
+.unfulfilled {
+  color: black;
+  font-weight: 600;
+  background: #ff4a4a;
+  border-color: #ff4a4a;
+}
+
+.filter-icon svg {
+  width: 7px;
+  height: 10px;
+  margin-left: 6px;
+}
+
+.logout-btn {
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.side_logout-btn {
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* datatable css */
+
+/* Media Query for mobile & Tab  */
+
+@media only screen and (max-width: 1023px) {
+  .sidebar {
+    display: none;
+    width: 300px;
+  }
+
+  .main-content {
+    width: 100%;
+    float: none;
+  }
+
+  .sidebarToggle {
+    display: block;
+  }
+
+  .close-button {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form {
+    width: 310px;
+  }
+
+  .inputOtpForm .otp {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .sidebar {
+    display: none;
+    /* width: 90%; */
+  }
+
+  .LinkDiv {
+    display: none;
+  }
+
+  .edit_form {
+    width: 310px;
+  }
+
+  .edd {
+    display: block;
+  }
+}
