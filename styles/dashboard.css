@@ -17,6 +17,14 @@ body {
   font-family: "Poppins", sans-serif !important;
 }
 
+h1,
+h2,
+h3,
+h4, h5,
+h6, a, p, span, label, button, input, textarea, select, option {
+  font-family: "Poppins", sans-serif !important;
+}
+
 .container {
   width: 100%;
   padding-right: 15px;

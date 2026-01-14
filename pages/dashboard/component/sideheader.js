@@ -36,7 +36,6 @@ const SideHeader = ({ isOpen, handleCloseSidebar, currentPage }) => {
       sublinks: [
         { href: "/dashboard/all-products", label: "All Products" },
         { href: "/dashboard/add-products", label: "Add Products" },
-        { href: "/dashboard/edit-products", label: "Edit Products" },
       ],
     },
     {
@@ -46,7 +45,6 @@ const SideHeader = ({ isOpen, handleCloseSidebar, currentPage }) => {
       sublinks: [
         { href: "/dashboard/all-categories", label: "All Categories" },
         { href: "/dashboard/add-categories", label: "Add Categories" },
-        { href: "/dashboard/edit-categories", label: "Edit Categories" },
       ],
     },
     { href: "/dashboard/billing", label: "Billing", icon: faMoneyBill1Wave },
