@@ -5,14 +5,18 @@ export default function handler(req, res) {
         return res.status(405).end();
     }
 
-    res.setHeader(
-        "Set-Cookie",
-        cookie.serialize("token", "", {
+        res.setHeader("Set-Cookie", [
+          cookie.serialize("token", "", {
+          httpOnly: true,
+            path: "/",
+            expires: new Date(0),
+          }),
+          cookie.serialize("email","", {
             httpOnly: true,
             path: "/",
             expires: new Date(0),
-        })
-    );
+          }),
+        ]);
 
     res.status(200).json({ success: true });
 }

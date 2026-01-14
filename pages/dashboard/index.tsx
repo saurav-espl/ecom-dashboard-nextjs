@@ -1,5 +1,5 @@
 import { verifyToken } from "../../lib/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
@@ -215,6 +215,20 @@ export async function getServerSideProps({ req }) {
 }
 
 export default function Dashboard({ user, dashboardData }) {
+
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    fetch("/api/me", { credentials: "include" })
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.user?.name) {
+          setName(data.user.name);
+          console.log(data.user.name);
+        }
+      });
+  }, []);
+
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -229,7 +243,7 @@ export default function Dashboard({ user, dashboardData }) {
           {/* Welcome Header */}
           <div className="welcomeHeader">
             <div>
-              <h1 className="pageTitle">Welcome back, {user?.name || 'Admin'}! 👋</h1>
+              <h1 className="pageTitle">Welcome back, {name || 'Admin'}! 👋</h1>
               <p className="welcomeSubtitle">Here's what's happening with your store today.</p>
             </div>
             <div className="dateDisplay">
