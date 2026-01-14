@@ -54,6 +54,20 @@ export default async function handler(req, res) {
         path: "/",
         maxAge: 60 * 60 * 24,
       }),
+      cookie.serialize("address", user.address, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        path: "/",
+        maxAge: 60 * 60 * 24,
+      }),
+      cookie.serialize("phone", user.phone, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        path: "/",
+        maxAge: 60 * 60 * 24,
+      }),
     ]);
 
     res.status(200).json({ success: true });

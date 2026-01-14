@@ -18,6 +18,33 @@ const MyAccount = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [passwordType, setPasswordType] = useState("password");
+    const [address, setAdress] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+
+    useEffect(() => {
+        fetch("/api/me", { credentials: "include" })
+          .then(res => res.ok ? res.json() : null)
+          .then(data => {
+            if (data?.user?.address) {
+              setAdress(data.user.address);
+              console.log(data.user.address);
+            }
+            if (data?.user?.phone) {
+              setPhone(data.user.phone);
+              console.log(data.user.phone);
+            }
+            if (data?.user?.email) {
+              setEmail(data.user.email);
+              console.log(data.user.email);
+            }
+            if (data?.user?.name) {
+              setName(data.user.name);
+              console.log(data.user.name);
+            }
+          });
+    }, []);
 
     // User data state
     const [userData, setUserData] = useState({
@@ -188,7 +215,7 @@ const MyAccount = () => {
                                             type="text"
                                             name="name"
                                             className="input"
-                                            value={userData.name}
+                                            value={ name ?? userData.name}
                                             onChange={handleUserDataChange}
                                             disabled={!isEditing}
                                             required
@@ -205,7 +232,7 @@ const MyAccount = () => {
                                             type="email"
                                             name="email"
                                             className="input"
-                                            value={userData.email}
+                                            value={email ?? userData.email}
                                             onChange={handleUserDataChange}
                                             disabled={!isEditing}
                                             required
@@ -222,7 +249,7 @@ const MyAccount = () => {
                                             type="tel"
                                             name="phone"
                                             className="input"
-                                            value={userData.phone}
+                                            value={phone ?? userData.phone}
                                             onChange={handleUserDataChange}
                                             disabled={!isEditing}
                                         />
@@ -237,7 +264,7 @@ const MyAccount = () => {
                                         <textarea
                                             name="address"
                                             className="input textarea"
-                                            value={userData.address}
+                                            value={address ?? userData.address}
                                             onChange={handleUserDataChange}
                                             disabled={!isEditing}
                                             rows="3"
