@@ -29,7 +29,10 @@ import {
     faRefresh,
     faDownload,
     faUpload,
-    faTag
+    faTag,
+    faArrowRight,
+    faChartBar,
+    faLink
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
@@ -69,7 +72,7 @@ const AllCategoriesPage = () => {
                     products: 156,
                     description: "All electronic devices and accessories",
                     status: "active",
-                    image: "",
+                    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=400&fit=crop",
                     parentId: null,
                     level: 0,
                     order: 1,
@@ -87,7 +90,7 @@ const AllCategoriesPage = () => {
                             products: 45,
                             description: "Latest smartphones and accessories",
                             status: "active",
-                            image: "",
+                            image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w-400&h=400&fit=crop",
                             parentId: 1,
                             level: 1,
                             order: 1,
@@ -101,7 +104,7 @@ const AllCategoriesPage = () => {
                                     name: "Android Phones",
                                     handle: "android-phones",
                                     products: 25,
-                                    description: "Android smartphones",
+                                    description: "Android smartphones from Samsung, Google, OnePlus",
                                     status: "active",
                                     image: "",
                                     parentId: 11,
@@ -118,7 +121,7 @@ const AllCategoriesPage = () => {
                                     name: "iPhones",
                                     handle: "iphones",
                                     products: 20,
-                                    description: "Apple iPhones",
+                                    description: "Apple iPhones and accessories",
                                     status: "active",
                                     image: "",
                                     parentId: 11,
@@ -139,7 +142,7 @@ const AllCategoriesPage = () => {
                             products: 32,
                             description: "Laptops, desktops and accessories",
                             status: "active",
-                            image: "",
+                            image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w-400&h=400&fit=crop",
                             parentId: 1,
                             level: 1,
                             order: 2,
@@ -156,7 +159,7 @@ const AllCategoriesPage = () => {
                             products: 28,
                             description: "Headphones, speakers and audio equipment",
                             status: "active",
-                            image: "",
+                            image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w-400&h=400&fit=crop",
                             parentId: 1,
                             level: 1,
                             order: 3,
@@ -175,7 +178,7 @@ const AllCategoriesPage = () => {
                     products: 234,
                     description: "Men, women and kids clothing",
                     status: "active",
-                    image: "",
+                    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&h=400&fit=crop",
                     parentId: null,
                     level: 0,
                     order: 2,
@@ -229,7 +232,7 @@ const AllCategoriesPage = () => {
                     products: 89,
                     description: "Furniture, decor and garden supplies",
                     status: "draft",
-                    image: "",
+                    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop",
                     parentId: null,
                     level: 0,
                     order: 3,
@@ -246,7 +249,7 @@ const AllCategoriesPage = () => {
                     products: 312,
                     description: "All types of books and publications",
                     status: "active",
-                    image: "",
+                    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop",
                     parentId: null,
                     level: 0,
                     order: 4,
@@ -263,7 +266,7 @@ const AllCategoriesPage = () => {
                     products: 67,
                     description: "Sports equipment and outdoor gear",
                     status: "active",
-                    image: "",
+                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop",
                     parentId: null,
                     level: 0,
                     order: 5,
@@ -280,7 +283,7 @@ const AllCategoriesPage = () => {
                     products: 178,
                     description: "Cosmetics, skincare and health products",
                     status: "draft",
-                    image: "",
+                    image: "https://images.unsplash.com/photo-1522338242990-e1a3f7c3b526?w=400&h=400&fit=crop",
                     parentId: null,
                     level: 0,
                     order: 6,
@@ -461,6 +464,18 @@ const AllCategoriesPage = () => {
         setExpandedCategories(new Set());
     };
 
+    // Duplicate a category
+    const handleDuplicate = (categoryId) => {
+        console.log('Duplicating category:', categoryId);
+        // Implementation for duplicating category
+    };
+
+    // View category details
+    const handleViewDetails = (categoryId) => {
+        console.log('Viewing category details:', categoryId);
+        // Implementation for viewing details
+    };
+
     // Render category row
     const renderCategoryRow = (category) => {
         const hasChildren = category.children && category.children.length > 0;
@@ -496,11 +511,13 @@ const AllCategoriesPage = () => {
                             {!hasChildren && (
                                 <span className="expand-placeholder"></span>
                             )}
-                            <div className="category-icon">
-                                {hasChildren ? (
-                                    <FontAwesomeIcon icon={isExpanded ? faFolderOpen : faFolder} />
+                            <div className="category-image">
+                                {category.image ? (
+                                    <img src={category.image} alt={category.name} />
                                 ) : (
-                                    <FontAwesomeIcon icon={faFolder} />
+                                    <div className="category-image-placeholder">
+                                        <FontAwesomeIcon icon={faFolder} />
+                                    </div>
                                 )}
                             </div>
                             <div className="category-info">
@@ -521,7 +538,9 @@ const AllCategoriesPage = () => {
                                     )}
                                 </div>
                                 <div className="category-meta">
-                                    <span className="category-handle">/{category.handle}</span>
+                                    <span className="category-handle">
+                                        <FontAwesomeIcon icon={faLink} /> /{category.handle}
+                                    </span>
                                     {category.description && (
                                         <span className="category-description">{category.description}</span>
                                     )}
@@ -532,8 +551,16 @@ const AllCategoriesPage = () => {
                 </td>
                 <td>
                     <div className="category-products">
-                        <FontAwesomeIcon icon={faBox} />
-                        <span>{category.products.toLocaleString()}</span>
+                        <div className="products-count">
+                            <FontAwesomeIcon icon={faBox} />
+                            <span>{category.products.toLocaleString()}</span>
+                        </div>
+                        <div className="products-progress">
+                            <div
+                                className="progress-bar"
+                                style={{ width: `${Math.min(category.products / 5, 100)}%` }}
+                            ></div>
+                        </div>
                     </div>
                 </td>
                 <td>
@@ -543,13 +570,14 @@ const AllCategoriesPage = () => {
                 </td>
                 <td>
                     <span className={`status-badge ${category.status}`}>
-                        {category.status}
+                        <FontAwesomeIcon icon={category.status === 'active' ? faCheck : faTimes} />
+                        {category.status.charAt(0).toUpperCase() + category.status.slice(1)}
                     </span>
                 </td>
                 <td>
                     <div className="category-date">
                         <FontAwesomeIcon icon={faCalendar} />
-                        {new Date(category.createdAt).toLocaleDateString()}
+                        <span>{new Date(category.createdAt).toLocaleDateString()}</span>
                     </div>
                 </td>
                 <td>
@@ -558,6 +586,13 @@ const AllCategoriesPage = () => {
                             <FontAwesomeIcon icon={faEdit} />
                             <span>Edit</span>
                         </Link>
+                        <button
+                            className="action-btn duplicate"
+                            onClick={() => handleDuplicate(category.id)}
+                        >
+                            <FontAwesomeIcon icon={faCopy} />
+                            <span>Duplicate</span>
+                        </button>
                         <button
                             className="action-btn delete"
                             onClick={() => handleDelete(category.id, category.name)}
@@ -574,6 +609,27 @@ const AllCategoriesPage = () => {
         );
     };
 
+    // Get category statistics
+    const getCategoryStats = () => {
+        const flattened = getFlattenedCategories(categories);
+        return {
+            total: flattened.length,
+            active: flattened.filter(c => c.status === 'active').length,
+            draft: flattened.filter(c => c.status === 'draft').length,
+            archived: flattened.filter(c => c.status === 'archived').length,
+            automated: flattened.filter(c => c.type === 'automated').length,
+            manual: flattened.filter(c => c.type === 'manual').length,
+            subcategories: flattened.filter(c => c.level > 0).length,
+            mainCategories: flattened.filter(c => c.level === 0).length,
+            totalProducts: flattened.reduce((sum, c) => sum + c.products, 0),
+            deepestLevel: Math.max(...flattened.map(c => c.level)),
+            averageDepth: (flattened.reduce((sum, c) => sum + c.level, 0) / flattened.length).toFixed(1),
+            mostProducts: Math.max(...flattened.map(c => c.products))
+        };
+    };
+
+    const stats = getCategoryStats();
+
     return (
         <Layout>
             <div className="dashContent">
@@ -581,10 +637,10 @@ const AllCategoriesPage = () => {
                 <div className="pageHeader">
                     <div className="headerLeft">
                         <h1 className="pageTitle">
-                            <FontAwesomeIcon icon={faLayerGroup} /> All Collections
+                            <FontAwesomeIcon icon={faLayerGroup} /> Collections Manager
                         </h1>
                         <p className="pageSubtitle">
-                            Manage your product collections and categories
+                            Organize and manage all your product collections
                         </p>
                     </div>
                     <div className="headerRight">
@@ -603,14 +659,14 @@ const AllCategoriesPage = () => {
                         <div className="cardContent">
                             <h3>Total Collections</h3>
                             <div className="cardValue">
-                                {getFlattenedCategories(categories).length}
+                                {stats.total}
                             </div>
                             <div className="cardSubtext">
                                 <span className="main-cats">
-                                    {categories.length} main categories
+                                    {stats.mainCategories} main collections
                                 </span>
                                 <span className="sub-cats">
-                                    {getFlattenedCategories(categories).filter(c => c.level > 0).length} subcategories
+                                    {stats.subcategories} subcollections
                                 </span>
                             </div>
                         </div>
@@ -623,7 +679,7 @@ const AllCategoriesPage = () => {
                         <div className="cardContent">
                             <h3>Active</h3>
                             <div className="cardValue">
-                                {getFlattenedCategories(categories).filter(c => c.status === 'active').length}
+                                {stats.active}
                             </div>
                             <div className="cardSubtext">
                                 Published on store
@@ -638,7 +694,7 @@ const AllCategoriesPage = () => {
                         <div className="cardContent">
                             <h3>Draft</h3>
                             <div className="cardValue">
-                                {getFlattenedCategories(categories).filter(c => c.status === 'draft').length}
+                                {stats.draft}
                             </div>
                             <div className="cardSubtext">
                                 Not published
@@ -653,7 +709,7 @@ const AllCategoriesPage = () => {
                         <div className="cardContent">
                             <h3>Automated</h3>
                             <div className="cardValue">
-                                {getFlattenedCategories(categories).filter(c => c.type === 'automated').length}
+                                {stats.automated}
                             </div>
                             <div className="cardSubtext">
                                 Smart collections
@@ -706,9 +762,9 @@ const AllCategoriesPage = () => {
                                     className="filterSelect"
                                 >
                                     <option value="all">All Levels</option>
-                                    <option value="0">Main Categories</option>
-                                    <option value="1">Level 1 Subcategories</option>
-                                    <option value="2">Level 2 Subcategories</option>
+                                    <option value="0">Main Collections</option>
+                                    <option value="1">Level 1 Subcollections</option>
+                                    <option value="2">Level 2 Subcollections</option>
                                 </select>
                             </div>
                         </div>
@@ -759,6 +815,8 @@ const AllCategoriesPage = () => {
                                     <option value="">Bulk Actions</option>
                                     <option value="activate">Activate</option>
                                     <option value="deactivate">Deactivate</option>
+                                    <option value="featured">Mark as Featured</option>
+                                    <option value="unfeatured">Remove Featured</option>
                                     <option value="delete">Delete</option>
                                     <option value="export">Export Selected</option>
                                 </select>
@@ -842,7 +900,7 @@ const AllCategoriesPage = () => {
                                             <FontAwesomeIcon icon={getSortIcon('createdAt')} />
                                         </button>
                                     </th>
-                                    <th width="200">Actions</th>
+                                    <th width="240">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -878,7 +936,7 @@ const AllCategoriesPage = () => {
                                     className="bulkSelectBtn"
                                     onClick={() => setShowBulkActions(true)}
                                 >
-                                    {selectedCategories.size} selected
+                                    <FontAwesomeIcon icon={faSitemap} /> {selectedCategories.size} selected
                                 </button>
                             )}
                         </div>
@@ -950,50 +1008,65 @@ const AllCategoriesPage = () => {
                 {/* Quick Stats */}
                 <div className="quickStats">
                     <div className="statsCard">
-                        <h3>Collection Hierarchy</h3>
+                        <h3>
+                            <FontAwesomeIcon icon={faChartBar} /> Collection Analytics
+                        </h3>
                         <div className="hierarchyStats">
                             <div className="hierarchyItem">
-                                <span className="statLabel">Deepest Level:</span>
+                                <span className="statLabel">Total Products:</span>
                                 <span className="statValue">
-                                    {Math.max(...getFlattenedCategories(categories).map(c => c.level))}
+                                    {stats.totalProducts.toLocaleString()}
                                 </span>
                             </div>
                             <div className="hierarchyItem">
-                                <span className="statLabel">Average Depth:</span>
+                                <span className="statLabel">Average Products:</span>
                                 <span className="statValue">
-                                    {(getFlattenedCategories(categories).reduce((sum, c) => sum + c.level, 0) /
-                                        getFlattenedCategories(categories).length).toFixed(1)}
+                                    {Math.round(stats.totalProducts / stats.total).toLocaleString()}
                                 </span>
                             </div>
                             <div className="hierarchyItem">
                                 <span className="statLabel">Most Products:</span>
                                 <span className="statValue">
-                                    {Math.max(...getFlattenedCategories(categories).map(c => c.products)).toLocaleString()}
+                                    {stats.mostProducts.toLocaleString()}
+                                </span>
+                            </div>
+                            <div className="hierarchyItem">
+                                <span className="statLabel">Featured Collections:</span>
+                                <span className="statValue">
+                                    {getFlattenedCategories(categories).filter(c => c.featured).length}
                                 </span>
                             </div>
                         </div>
                     </div>
 
                     <div className="statsCard">
-                        <h3>Recent Activity</h3>
+                        <h3>
+                            <FontAwesomeIcon icon={faSitemap} /> Hierarchy Stats
+                        </h3>
                         <div className="activityList">
                             <div className="activityItem">
-                                <FontAwesomeIcon icon={faEdit} />
-                                <span>Electronics updated 2 hours ago</span>
+                                <FontAwesomeIcon icon={faLayerGroup} />
+                                <span>Deepest Level: {stats.deepestLevel}</span>
                             </div>
                             <div className="activityItem">
-                                <FontAwesomeIcon icon={faPlus} />
-                                <span>New subcategory added to Smartphones</span>
+                                <FontAwesomeIcon icon={faChartBar} />
+                                <span>Average Depth: {stats.averageDepth}</span>
                             </div>
                             <div className="activityItem">
-                                <FontAwesomeIcon icon={faCheck} />
-                                <span>Fashion collection activated</span>
+                                <FontAwesomeIcon icon={faFolder} />
+                                <span>Subcollection Ratio: {(stats.subcategories / stats.total * 100).toFixed(1)}%</span>
+                            </div>
+                            <div className="activityItem">
+                                <FontAwesomeIcon icon={faRefresh} />
+                                <span>Automated Ratio: {(stats.automated / stats.total * 100).toFixed(1)}%</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="statsCard">
-                        <h3>Quick Actions</h3>
+                        <h3>
+                            <FontAwesomeIcon icon={faArrowRight} /> Quick Actions
+                        </h3>
                         <div className="quickActionsList">
                             <Link href="/dashboard/add-categories" className="quickAction">
                                 <FontAwesomeIcon icon={faPlus} />
@@ -1017,842 +1090,921 @@ const AllCategoriesPage = () => {
             </div>
 
             <style jsx>{`
-        /* Page Header */
-        .pageHeader {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 30px;
-          padding-bottom: 20px;
-          border-bottom: 2px solid #e2e8f0;
-        }
-
-        .headerLeft {
-          flex: 1;
-        }
-
-        .pageTitle {
-          font-size: 28px;
-          margin: 0 0 8px 0;
-          color: #2d3748;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .pageSubtitle {
-          color: #718096;
-          margin: 0;
-          font-size: 16px;
-        }
-
-        .btnPrimary {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 12px 24px;
-          border-radius: 8px;
-          background: #667eea;
-          color: white;
-          font-weight: 500;
-          font-size: 15px;
-          text-decoration: none;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s;
-        }
-
-        .btnPrimary:hover {
-          background: #5a6fd8;
-        }
-
-        /* Summary Cards */
-        .summaryCards {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 20px;
-          margin-bottom: 30px;
-        }
-
-        .summaryCard {
-          background: white;
-          border-radius: 12px;
-          padding: 25px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .summaryCard:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .cardIcon {
-          width: 60px;
-          height: 60px;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 24px;
-          color: white;
-        }
-
-        .summaryCard.total .cardIcon {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .summaryCard.active .cardIcon {
-          background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-
-        .summaryCard.draft .cardIcon {
-          background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .summaryCard.automated .cardIcon {
-          background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .cardContent {
-          flex: 1;
-        }
-
-        .cardContent h3 {
-          margin: 0 0 8px 0;
-          font-size: 16px;
-          color: #718096;
-          font-weight: 500;
-        }
-
-        .cardValue {
-          font-size: 32px;
-          font-weight: 700;
-          color: #2d3748;
-          margin-bottom: 8px;
-        }
-
-        .cardSubtext {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          font-size: 13px;
-          color: #a0aec0;
-        }
-
-        .main-cats, .sub-cats {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-        }
-
-        /* Main Content */
-        .categoriesMain {
-          background: white;
-          border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-          margin-bottom: 30px;
-          overflow: hidden;
-        }
-
-        /* Controls Bar */
-        .controlsBar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 20px;
-          background: #f8fafc;
-          border-bottom: 1px solid #e2e8f0;
-          flex-wrap: wrap;
-          gap: 20px;
-        }
-
-        .controlsLeft {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          flex-wrap: wrap;
-          flex: 1;
-        }
-
-        .searchBox {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: white;
-          border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          padding: 10px 15px;
-          min-width: 300px;
-          flex: 1;
-          max-width: 400px;
-        }
-
-        .searchInput {
-          border: none;
-          outline: none;
-          font-size: 15px;
-          color: #2d3748;
-          width: 100%;
-          background: transparent;
-        }
-
-        .filterGroup {
-          display: flex;
-          gap: 10px;
-          flex-wrap: wrap;
-        }
-
-        .filterSelect {
-          padding: 10px 15px;
-          border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          font-size: 14px;
-          color: #4a5568;
-          background: white;
-          min-width: 150px;
-          cursor: pointer;
-        }
-
-        .controlsRight {
-          display: flex;
-          gap: 15px;
-          flex-wrap: wrap;
-        }
-
-        .viewControls, .exportControls {
-          display: flex;
-          gap: 10px;
-        }
-
-        .viewBtn, .exportBtn, .importBtn {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 10px 15px;
-          border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          background: white;
-          color: #4a5568;
-          font-size: 14px;
-          cursor: pointer;
-          transition: all 0.3s;
-        }
-
-        .viewBtn:hover, .exportBtn:hover, .importBtn:hover {
-          background: #f8fafc;
-          border-color: #cbd5e0;
-        }
-
-        /* Bulk Actions */
-        .bulkActionsBar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 15px 20px;
-          background: #e6f3ff;
-          border-bottom: 1px solid #b3d9ff;
-        }
-
-        .bulkInfo {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-weight: 500;
-          color: #0066cc;
-        }
-
-        .bulkControls {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-
-        .bulkSelect {
-          padding: 10px 15px;
-          border: 1px solid #b3d9ff;
-          border-radius: 6px;
-          background: white;
-          min-width: 200px;
-        }
-
-        .bulkApplyBtn, .bulkCancelBtn {
-          padding: 10px 20px;
-          border-radius: 6px;
-          font-weight: 500;
-          cursor: pointer;
-          border: none;
-        }
-
-        .bulkApplyBtn {
-          background: #0066cc;
-          color: white;
-        }
-
-        .bulkApplyBtn:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .bulkCancelBtn {
-          background: #e2e8f0;
-          color: #4a5568;
-        }
-
-        /* Categories Table */
-        .categoriesTableWrapper {
-          overflow-x: auto;
-        }
-
-        .categoriesTable {
-          width: 100%;
-          border-collapse: collapse;
-          min-width: 1000px;
-        }
-
-        .categoriesTable thead th {
-          background: #f8fafc;
-          padding: 5px 8px;
-          text-align: left;
-          font-weight: 600;
-          color: #4a5568;
-          border-bottom: 1px solid #000000;
-          white-space: nowrap;
-        }
-
-        .sortableHeader {
-          background: none;
-          border: none;
-          font: inherit;
-          color: inherit;
-          font-weight: inherit;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          cursor: pointer;
-          padding: 0;
-        }
-
-        .selectAllCheckbox {
-          width: 18px;
-          height: 18px;
-          cursor: pointer;
-        }
-
-        /* Category Row Styles */
-        .category-row {
-          transition: background 0.3s;
-        }
-
-        .category-row:hover {
-          background: #f8fafc;
-        }
-
-        .category-row.selected {
-          background: #f0f9ff;
-        }
-
-        .category-select {
-          padding: 0 15px;
-        }
-
-        .category-checkbox {
-          width: 18px;
-          height: 18px;
-          cursor: pointer;
-        }
-
-        .category-name-cell {
-          padding: 15px;
-        }
-
-        .category-name-content {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .expand-btn {
-          background: none;
-          border: none;
-          color: #cbd5e0;
-          cursor: pointer;
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .expand-btn:hover {
-          color: #667eea;
-        }
-
-        .expand-placeholder {
-          width: 24px;
-          flex-shrink: 0;
-        }
-
-        .category-icon {
-          width: 32px;
-          height: 32px;
-          border-radius: 8px;
-          background: #f8fafc;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #667eea;
-          flex-shrink: 0;
-        }
-
-        .category-info {
-          flex: 1;
-          min-width: 0;
-        }
-
-        .category-title {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 4px;
-        }
-
-        .category-name {
-          font-weight: 600;
-          color: #2d3748;
-          font-size: 16px;
-        }
-
-        .featured-badge, .automated-badge, .subcategory-label {
-          padding: 2px 8px;
-          border-radius: 12px;
-          font-size: 11px;
-          font-weight: 600;
-          display: inline-flex;
-          align-items: center;
-          gap: 3px;
-        }
-
-        .featured-badge {
-          background: #fff7ed;
-          color: #9c4221;
-          border: 1px solid #fed7aa;
-        }
-
-        .automated-badge {
-          background: #f0f9ff;
-          color: #0369a1;
-          border: 1px solid #bae6fd;
-        }
-
-        .subcategory-label {
-          background: #f5f3ff;
-          color: #5b21b6;
-          border: 1px solid #ddd6fe;
-        }
-
-        .category-meta {
-          display: flex;
-          gap: 15px;
-          font-size: 13px;
-          color: #718096;
-          flex-wrap: wrap;
-        }
-
-        .category-handle {
-          color: #667eea;
-          font-weight: 500;
-        }
-
-        .category-description {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          max-width: 300px;
-        }
-
-        .category-products {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-weight: 600;
-          color: #4a5568;
-          padding: 15px;
-        }
-
-        /* Badges */
-        .type-badge, .status-badge {
-          padding: 6px 12px;
-          border-radius: 20px;
-          font-size: 12px;
-          font-weight: 600;
-          display: inline-block;
-          text-align: center;
-          min-width: 80px;
-        }
-
-        .type-badge.manual {
-          background: #f0f9ff;
-          color: #0369a1;
-          border: 1px solid #bae6fd;
-        }
-
-        .type-badge.automated {
-          background: #f0fdf4;
-          color: #166534;
-          border: 1px solid #bbf7d0;
-        }
-
-        .status-badge.active {
-          background: #f0fdf4;
-          color: #166534;
-          border: 1px solid #bbf7d0;
-        }
-
-        .status-badge.draft {
-          background: #fefce8;
-          color: #854d0e;
-          border: 1px solid #fef08a;
-        }
-
-        .status-badge.archived {
-          background: #f5f5f5;
-          color: #525252;
-          border: 1px solid #e5e5e5;
-        }
-
-        .category-date {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 14px;
-          color: #718096;
-          padding: 15px;
-        }
-
-        /* Actions */
-        .category-actions {
-          display: flex;
-          gap: 8px;
-          padding: 15px;
-        }
-
-        .action-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          padding: 8px 12px;
-          border-radius: 6px;
-          font-size: 14px;
-          font-weight: 500;
-          text-decoration: none;
-          transition: all 0.3s;
-          border: none;
-          cursor: pointer;
-        }
-
-        .action-btn.edit {
-          background: #e0e7ff;
-          color: #3730a3;
-        }
-
-        .action-btn.edit:hover {
-          background: #c7d2fe;
-        }
-
-        .action-btn.delete {
-          background: #fee2e2;
-          color: #991b1b;
-        }
-
-        .action-btn.delete:hover {
-          background: #fecaca;
-        }
-
-        .action-btn.more {
-          background: #f3f4f6;
-          color: #6b7280;
-          padding: 8px;
-        }
-
-        /* Empty State */
-        .emptyState {
-          text-align: center;
-          padding: 60px 20px;
-          color: #a0aec0;
-        }
-
-        .emptyState h3 {
-          margin: 20px 0 10px;
-          color: #4a5568;
-        }
-
-        .emptyState p {
-          margin-bottom: 20px;
-        }
-
-        /* Table Footer */
-        .tableFooter {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 20px;
-          border-top: 1px solid #e2e8f0;
-          flex-wrap: wrap;
-          gap: 20px;
-        }
-
-        .footerLeft {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-        }
-
-        .itemCount {
-          color: #718096;
-          font-size: 14px;
-        }
-
-        .bulkSelectBtn {
-          padding: 6px 12px;
-          background: #e0e7ff;
-          color: #3730a3;
-          border: none;
-          border-radius: 6px;
-          font-size: 14px;
-          cursor: pointer;
-        }
-
-        .footerRight {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-        }
-
-        .pagination {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .paginationBtn {
-          padding: 8px 12px;
-          border: 1px solid #e2e8f0;
-          background: white;
-          border-radius: 6px;
-          color: #4a5568;
-          cursor: pointer;
-          transition: all 0.3s;
-        }
-
-        .paginationBtn:hover:not(:disabled) {
-          background: #f8fafc;
-        }
-
-        .paginationBtn:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .pageNumbers {
-          display: flex;
-          gap: 5px;
-        }
-
-        .pageBtn {
-          width: 36px;
-          height: 36px;
-          border: 1px solid #e2e8f0;
-          background: white;
-          border-radius: 6px;
-          color: #4a5568;
-          cursor: pointer;
-          transition: all 0.3s;
-        }
-
-        .pageBtn.active {
-          background: #667eea;
-          color: white;
-          border-color: #667eea;
-        }
-
-        .perPageSelector {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: #718096;
-          font-size: 14px;
-        }
-
-        .perPageSelect {
-          padding: 6px 10px;
-          border: 1px solid #e2e8f0;
-          border-radius: 6px;
-          background: white;
-        }
-
-        /* Quick Stats */
-        .quickStats {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 20px;
-          margin-top: 30px;
-        }
-
-        .statsCard {
-          background: white;
-          border-radius: 12px;
-          padding: 25px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .statsCard h3 {
-          margin: 0 0 20px 0;
-          color: #2d3748;
-          font-size: 18px;
-        }
-
-        .hierarchyStats {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .hierarchyItem {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .statLabel {
-          color: #718096;
-          font-size: 14px;
-        }
-
-        .statValue {
-          font-weight: 600;
-          color: #2d3748;
-          font-size: 16px;
-        }
-
-        .activityList {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .activityItem {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 14px;
-          color: #4a5568;
-        }
-
-        .activityItem svg {
-          color: #667eea;
-        }
-
-        .quickActionsList {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 10px;
-        }
-
-        .quickAction {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px;
-          border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          background: #f8fafc;
-          color: #4a5568;
-          text-decoration: none;
-          font-size: 14px;
-          transition: all 0.3s;
-          cursor: pointer;
-          border: none;
-        }
-
-        .quickAction:hover {
-          background: #edf2f7;
-          border-color: #cbd5e0;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-          .controlsBar {
-            flex-direction: column;
-            align-items: stretch;
-          }
-          
-          .controlsLeft, .controlsRight {
-            width: 100%;
-          }
-          
-          .searchBox {
-            max-width: none;
-          }
-          
-          .tableFooter {
-            flex-direction: column;
-            align-items: stretch;
-          }
-          
-          .footerRight {
-            width: 100%;
-            justify-content: space-between;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .pageHeader {
-            flex-direction: column;
-            gap: 20px;
-          }
-          
-          .summaryCards {
-            grid-template-columns: 1fr;
-          }
-          
-          .filterGroup {
-            flex-direction: column;
-            width: 100%;
-          }
-          
-          .filterSelect {
-            width: 100%;
-          }
-          
-          .controlsRight {
-            flex-direction: column;
-            width: 100%;
-          }
-          
-          .viewControls, .exportControls {
-            width: 100%;
-            justify-content: space-between;
-          }
-          
-          .category-meta {
-            flex-direction: column;
-            gap: 5px;
-          }
-          
-          .quickStats {
-            grid-template-columns: 1fr;
-          }
-          
-          .quickActionsList {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
+                /* Page Header */
+                .pageHeader {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 30px;
+                    padding-bottom: 20px;
+                    border-bottom: 2px solid #e2e8f0;
+                }
+
+                .headerLeft {
+                    flex: 1;
+                }
+
+                .pageTitle {
+                    font-size: 28px;
+                    margin: 0 0 8px 0;
+                    color: #2d3748;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .pageSubtitle {
+                    color: #718096;
+                    margin: 0;
+                    font-size: 16px;
+                }
+
+                .btnPrimary {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    background: #667eea;
+                    color: white;
+                    font-weight: 500;
+                    font-size: 15px;
+                    text-decoration: none;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+
+                .btnPrimary:hover {
+                    background: #5a6fd8;
+                }
+
+                /* Summary Cards */
+                .summaryCards {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 20px;
+                    margin-bottom: 30px;
+                }
+
+                .summaryCard {
+                    background: white;
+                    border-radius: 12px;
+                    padding: 25px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                }
+
+                .summaryCard:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+                }
+
+                .cardIcon {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                    color: white;
+                }
+
+                .summaryCard.total .cardIcon {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                }
+
+                .summaryCard.active .cardIcon {
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                }
+
+                .summaryCard.draft .cardIcon {
+                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                }
+
+                .summaryCard.automated .cardIcon {
+                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                }
+
+                .cardContent {
+                    flex: 1;
+                }
+
+                .cardContent h3 {
+                    margin: 0 0 8px 0;
+                    font-size: 16px;
+                    color: #718096;
+                    font-weight: 500;
+                }
+
+                .cardValue {
+                    font-size: 32px;
+                    font-weight: 700;
+                    color: #2d3748;
+                    margin-bottom: 8px;
+                }
+
+                .cardSubtext {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                    font-size: 13px;
+                    color: #a0aec0;
+                }
+
+                /* Main Content */
+                .categoriesMain {
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                    margin-bottom: 30px;
+                    overflow: hidden;
+                }
+
+                /* Controls Bar */
+                .controlsBar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px;
+                    background: #f8fafc;
+                    border-bottom: 1px solid #e2e8f0;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+                .controlsLeft {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    flex-wrap: wrap;
+                    flex: 1;
+                }
+
+                .searchBox {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: white;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    padding: 10px 15px;
+                    min-width: 300px;
+                    flex: 1;
+                    max-width: 400px;
+                }
+
+                .searchInput {
+                    border: none;
+                    outline: none;
+                    font-size: 15px;
+                    color: #2d3748;
+                    width: 100%;
+                    background: transparent;
+                }
+
+                .filterGroup {
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+
+                .filterSelect {
+                    padding: 10px 15px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    color: #4a5568;
+                    background: white;
+                    min-width: 150px;
+                    cursor: pointer;
+                }
+
+                .controlsRight {
+                    display: flex;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                }
+
+                .viewControls, .exportControls {
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .viewBtn, .exportBtn, .importBtn {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 10px 15px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    background: white;
+                    color: #4a5568;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+
+                .viewBtn:hover, .exportBtn:hover, .importBtn:hover {
+                    background: #f8fafc;
+                    border-color: #cbd5e0;
+                }
+
+                /* Bulk Actions */
+                .bulkActionsBar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px 20px;
+                    background: #e6f3ff;
+                    border-bottom: 1px solid #b3d9ff;
+                }
+
+                .bulkInfo {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-weight: 500;
+                    color: #0066cc;
+                }
+
+                .bulkControls {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                }
+
+                .bulkSelect {
+                    padding: 10px 15px;
+                    border: 1px solid #b3d9ff;
+                    border-radius: 6px;
+                    background: white;
+                    min-width: 200px;
+                }
+
+                .bulkApplyBtn, .bulkCancelBtn {
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    border: none;
+                }
+
+                .bulkApplyBtn {
+                    background: #0066cc;
+                    color: white;
+                }
+
+                .bulkApplyBtn:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                .bulkCancelBtn {
+                    background: #e2e8f0;
+                    color: #4a5568;
+                }
+
+                /* Categories Table */
+                .categoriesTableWrapper {
+                    overflow-x: auto;
+                }
+
+                .categoriesTable {
+                    width: 100%;
+                    border-collapse: collapse;
+                    min-width: 1000px;
+                }
+
+                .categoriesTable thead th {
+                    background: #f8fafc;
+                    padding: 15px 20px;
+                    text-align: left;
+                    font-weight: 600;
+                    color: #4a5568;
+                    border-bottom: 1px solid #e2e8f0;
+                    white-space: nowrap;
+                }
+
+                .sortableHeader {
+                    background: none;
+                    border: none;
+                    font: inherit;
+                    color: inherit;
+                    font-weight: inherit;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    cursor: pointer;
+                    padding: 0;
+                }
+
+                .selectAllCheckbox {
+                    width: 18px;
+                    height: 18px;
+                    cursor: pointer;
+                }
+
+                /* Category Row Styles */
+                .category-row {
+                    transition: background 0.3s;
+                }
+
+                .category-row:hover {
+                    background: #f8fafc;
+                }
+
+                .category-row.selected {
+                    background: #f0f9ff;
+                }
+
+                .category-select {
+                    padding: 0 20px;
+                }
+
+                .category-checkbox {
+                    width: 18px;
+                    height: 18px;
+                    cursor: pointer;
+                }
+
+                .category-name-cell {
+                    padding: 15px 20px;
+                }
+
+                .category-name-content {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .expand-btn {
+                    background: none;
+                    border: none;
+                    color: #cbd5e0;
+                    cursor: pointer;
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                }
+
+                .expand-btn:hover {
+                    color: #667eea;
+                }
+
+                .expand-placeholder {
+                    width: 24px;
+                    flex-shrink: 0;
+                }
+
+                .category-image {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    border: 1px solid #e2e8f0;
+                    flex-shrink: 0;
+                    background: #f8fafc;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .category-image-placeholder {
+                    color: #cbd5e0;
+                    font-size: 20px;
+                }
+
+                .category-image img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .category-info {
+                    flex: 1;
+                    min-width: 0;
+                }
+
+                .category-title {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 6px;
+                    flex-wrap: wrap;
+                }
+
+                .category-name {
+                    font-weight: 600;
+                    color: #2d3748;
+                    font-size: 16px;
+                }
+
+                .featured-badge, .automated-badge, .subcategory-label {
+                    padding: 4px 10px;
+                    border-radius: 12px;
+                    font-size: 11px;
+                    font-weight: 600;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 4px;
+                }
+
+                .featured-badge {
+                    background: #fff7ed;
+                    color: #9c4221;
+                    border: 1px solid #fed7aa;
+                }
+
+                .automated-badge {
+                    background: #f0f9ff;
+                    color: #0369a1;
+                    border: 1px solid #bae6fd;
+                }
+
+                .subcategory-label {
+                    background: #f5f3ff;
+                    color: #5b21b6;
+                    border: 1px solid #ddd6fe;
+                }
+
+                .category-meta {
+                    display: flex;
+                    gap: 15px;
+                    font-size: 13px;
+                    color: #718096;
+                    flex-wrap: wrap;
+                    align-items: center;
+                }
+
+                .category-handle {
+                    color: #667eea;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                .category-description {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    max-width: 300px;
+                }
+
+                .category-products {
+                    padding: 15px 20px;
+                    min-width: 120px;
+                }
+
+                .products-count {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-weight: 600;
+                    color: #4a5568;
+                    margin-bottom: 8px;
+                }
+
+                .products-progress {
+                    height: 6px;
+                    background: #e2e8f0;
+                    border-radius: 3px;
+                    overflow: hidden;
+                }
+
+                .progress-bar {
+                    height: 100%;
+                    background: linear-gradient(90deg, #667eea, #764ba2);
+                    border-radius: 3px;
+                }
+
+                /* Badges */
+                .type-badge, .status-badge {
+                    padding: 8px 14px;
+                    border-radius: 20px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    min-width: 100px;
+                    justify-content: center;
+                }
+
+                .type-badge.manual {
+                    background: #f0f9ff;
+                    color: #0369a1;
+                    border: 1px solid #bae6fd;
+                }
+
+                .type-badge.automated {
+                    background: #f0fdf4;
+                    color: #166534;
+                    border: 1px solid #bbf7d0;
+                }
+
+                .status-badge.active {
+                    background: #f0fdf4;
+                    color: #166534;
+                    border: 1px solid #bbf7d0;
+                }
+
+                .status-badge.draft {
+                    background: #fefce8;
+                    color: #854d0e;
+                    border: 1px solid #fef08a;
+                }
+
+                .status-badge.archived {
+                    background: #f5f5f5;
+                    color: #525252;
+                    border: 1px solid #e5e5e5;
+                }
+
+                .category-date {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    color: #718096;
+                    padding: 15px 20px;
+                    min-width: 120px;
+                }
+
+                /* Actions */
+                .category-actions {
+                    display: flex;
+                    gap: 8px;
+                    padding: 15px 20px;
+                }
+
+                .action-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    transition: all 0.3s;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .action-btn.edit {
+                    background: #e0e7ff;
+                    color: #3730a3;
+                }
+
+                .action-btn.edit:hover {
+                    background: #c7d2fe;
+                }
+
+                .action-btn.duplicate {
+                    background: #f0f9ff;
+                    color: #0369a1;
+                }
+
+                .action-btn.duplicate:hover {
+                    background: #dbeafe;
+                }
+
+                .action-btn.delete {
+                    background: #fee2e2;
+                    color: #991b1b;
+                }
+
+                .action-btn.delete:hover {
+                    background: #fecaca;
+                }
+
+                .action-btn.more {
+                    background: #f3f4f6;
+                    color: #6b7280;
+                    padding: 8px 10px;
+                }
+
+                /* Empty State */
+                .emptyState {
+                    text-align: center;
+                    padding: 60px 20px;
+                    color: #a0aec0;
+                }
+
+                .emptyState h3 {
+                    margin: 20px 0 10px;
+                    color: #4a5568;
+                    font-size: 20px;
+                }
+
+                .emptyState p {
+                    margin-bottom: 20px;
+                    font-size: 15px;
+                }
+
+                /* Table Footer */
+                .tableFooter {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px;
+                    border-top: 1px solid #e2e8f0;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+                .footerLeft {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                }
+
+                .itemCount {
+                    color: #718096;
+                    font-size: 14px;
+                }
+
+                .bulkSelectBtn {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 8px 16px;
+                    background: #e0e7ff;
+                    color: #3730a3;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+
+                .footerRight {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                .pagination {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .paginationBtn {
+                    padding: 8px 16px;
+                    border: 1px solid #e2e8f0;
+                    background: white;
+                    border-radius: 6px;
+                    color: #4a5568;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    font-size: 14px;
+                }
+
+                .paginationBtn:hover:not(:disabled) {
+                    background: #f8fafc;
+                }
+
+                .paginationBtn:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                .pageNumbers {
+                    display: flex;
+                    gap: 5px;
+                }
+
+                .pageBtn {
+                    width: 36px;
+                    height: 36px;
+                    border: 1px solid #e2e8f0;
+                    background: white;
+                    border-radius: 6px;
+                    color: #4a5568;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    font-size: 14px;
+                }
+
+                .pageBtn.active {
+                    background: #667eea;
+                    color: white;
+                    border-color: #667eea;
+                }
+
+                .perPageSelector {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: #718096;
+                    font-size: 14px;
+                }
+
+                .perPageSelect {
+                    padding: 8px 12px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 6px;
+                    background: white;
+                    font-size: 14px;
+                }
+
+                /* Quick Stats */
+                .quickStats {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 20px;
+                    margin-top: 30px;
+                }
+
+                .statsCard {
+                    background: white;
+                    border-radius: 12px;
+                    padding: 25px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+                }
+
+                .statsCard h3 {
+                    margin: 0 0 20px 0;
+                    color: #2d3748;
+                    font-size: 18px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .hierarchyStats {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+
+                .hierarchyItem {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .statLabel {
+                    color: #718096;
+                    font-size: 14px;
+                }
+
+                .statValue {
+                    font-weight: 600;
+                    color: #2d3748;
+                    font-size: 16px;
+                }
+
+                .activityList {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .activityItem {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 14px;
+                    color: #4a5568;
+                }
+
+                .activityItem svg {
+                    color: #667eea;
+                }
+
+                .quickActionsList {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 10px;
+                }
+
+                .quickAction {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    background: #f8fafc;
+                    color: #4a5568;
+                    text-decoration: none;
+                    font-size: 14px;
+                    transition: all 0.3s;
+                    cursor: pointer;
+                    border: none;
+                }
+
+                .quickAction:hover {
+                    background: #edf2f7;
+                    border-color: #cbd5e0;
+                }
+
+                /* Responsive */
+                @media (max-width: 1200px) {
+                    .controlsBar {
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+                    
+                    .controlsLeft, .controlsRight {
+                        width: 100%;
+                    }
+                    
+                    .searchBox {
+                        max-width: none;
+                    }
+                    
+                    .tableFooter {
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+                    
+                    .footerRight {
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .pageHeader {
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+                    
+                    .summaryCards {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    .filterGroup {
+                        flex-direction: column;
+                        width: 100%;
+                    }
+                    
+                    .filterSelect {
+                        width: 100%;
+                    }
+                    
+                    .controlsRight {
+                        flex-direction: column;
+                        width: 100%;
+                    }
+                    
+                    .viewControls, .exportControls {
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                    
+                    .category-meta {
+                        flex-direction: column;
+                        gap: 5px;
+                    }
+                    
+                    .category-actions {
+                        flex-wrap: wrap;
+                    }
+                    
+                    .quickStats {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    .quickActionsList {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .category-title {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 5px;
+                    }
+                    
+                    .category-actions {
+                        flex-direction: column;
+                    }
+                    
+                    .action-btn {
+                        width: 100%;
+                        justify-content: center;
+                    }
+                    
+                    .footerRight {
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
+            `}</style>
         </Layout>
     );
 };
