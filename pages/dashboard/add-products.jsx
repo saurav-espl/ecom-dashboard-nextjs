@@ -884,21 +884,6 @@ const AddProductsPage = () => {
             </div>
 
             <style jsx>{`
-        .pageHeader {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 30px;
-          padding-bottom: 20px;
-          border-bottom: 2px solid #e2e8f0;
-        }
-
-        .pageTitle {
-          font-size: 28px;
-          margin: 0;
-          color: #2d3748;
-        }
-
         .headerActions {
           display: flex;
           gap: 15px;
@@ -1335,38 +1320,6 @@ const AddProductsPage = () => {
           border-radius: 0;
         }
 
-        /* Buttons */
-        .btnPrimary, .btnSecondary {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 12px 24px;
-          border-radius: 8px;
-          font-weight: 500;
-          font-size: 15px;
-          cursor: pointer;
-          transition: all 0.3s;
-          border: none;
-          font-family: inherit;
-        }
-
-        .btnPrimary {
-          background: #000000;
-          color: white;
-        }
-
-        .btnPrimary:hover {
-          background: #5a6fd8;
-        }
-
-        .btnSecondary {
-          background: #e2e8f0;
-          color: #4a5568;
-        }
-
-        .btnSecondary:hover {
-          background: #cbd5e0;
-        }
 
         .formActions {
           display: flex;
@@ -1378,13 +1331,6 @@ const AddProductsPage = () => {
         }
 
         @media (max-width: 768px) {
-
-          .pageHeader {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-          }
-
           .headerActions {
             width: 100%;
             justify-content: flex-end;

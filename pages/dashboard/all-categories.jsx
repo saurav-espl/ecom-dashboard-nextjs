@@ -283,7 +283,7 @@ const AllCategoriesPage = () => {
                     products: 178,
                     description: "Cosmetics, skincare and health products",
                     status: "draft",
-                    image: "https://images.unsplash.com/photo-1522338242990-e1a3f7c3b526?w=400&h=400&fit=crop",
+                    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&h=400&fit=crop",
                     parentId: null,
                     level: 0,
                     order: 6,
@@ -495,7 +495,7 @@ const AllCategoriesPage = () => {
                     </div>
                 </td>
                 <td>
-                    <div className="category-name-cell" style={{ paddingLeft: `${category.level * 30}px` }}>
+                    <div className="category-name-cell">
                         <div className="category-name-content">
                             {hasChildren && (
                                 <button
@@ -511,11 +511,11 @@ const AllCategoriesPage = () => {
                             {!hasChildren && (
                                 <span className="expand-placeholder"></span>
                             )}
-                            <div className="category-image">
+                            <div className="categoryImage">
                                 {category.image ? (
                                     <img src={category.image} alt={category.name} />
                                 ) : (
-                                    <div className="category-image-placeholder">
+                                    <div className="categoryImage-placeholder">
                                         <FontAwesomeIcon icon={faFolder} />
                                     </div>
                                 )}
@@ -600,9 +600,6 @@ const AllCategoriesPage = () => {
                             <FontAwesomeIcon icon={faTrash} />
                             <span>Delete</span>
                         </button>
-                        <button className="action-btn more">
-                            <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
                     </div>
                 </td>
             </tr>
@@ -637,15 +634,15 @@ const AllCategoriesPage = () => {
                 <div className="pageHeader">
                     <div className="headerLeft">
                         <h1 className="pageTitle">
-                            <FontAwesomeIcon icon={faLayerGroup} /> Collections Manager
+                            <FontAwesomeIcon icon={faLayerGroup} /> Categories Manager
                         </h1>
                         <p className="pageSubtitle">
-                            Organize and manage all your product collections
+                            Organize and manage all your product categories
                         </p>
                     </div>
                     <div className="headerRight">
                         <Link href="/dashboard/add-categories" className="btnPrimary">
-                            <FontAwesomeIcon icon={faPlus} /> Create Collection
+                            <FontAwesomeIcon icon={faPlus} /> Create Categories
                         </Link>
                     </div>
                 </div>
@@ -657,16 +654,16 @@ const AllCategoriesPage = () => {
                             <FontAwesomeIcon icon={faFolder} />
                         </div>
                         <div className="cardContent">
-                            <h3>Total Collections</h3>
+                            <h3>Total Categories</h3>
                             <div className="cardValue">
                                 {stats.total}
                             </div>
                             <div className="cardSubtext">
                                 <span className="main-cats">
-                                    {stats.mainCategories} main collections
+                                    {stats.mainCategories} main categories
                                 </span>
                                 <span className="sub-cats">
-                                    {stats.subcategories} subcollections
+                                    {stats.subcategories} subcategories
                                 </span>
                             </div>
                         </div>
@@ -712,7 +709,7 @@ const AllCategoriesPage = () => {
                                 {stats.automated}
                             </div>
                             <div className="cardSubtext">
-                                Smart collections
+                                Smart categories
                             </div>
                         </div>
                     </div>
@@ -727,7 +724,7 @@ const AllCategoriesPage = () => {
                                 <FontAwesomeIcon icon={faSearch} />
                                 <input
                                     type="text"
-                                    placeholder="Search collections..."
+                                    placeholder="Search categories..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                     className="searchInput"
@@ -762,9 +759,9 @@ const AllCategoriesPage = () => {
                                     className="filterSelect"
                                 >
                                     <option value="all">All Levels</option>
-                                    <option value="0">Main Collections</option>
-                                    <option value="1">Level 1 Subcollections</option>
-                                    <option value="2">Level 2 Subcollections</option>
+                                    <option value="0">Main Categories</option>
+                                    <option value="1">Level 1 Subcategories</option>
+                                    <option value="2">Level 2 Subcategories</option>
                                 </select>
                             </div>
                         </div>
@@ -803,7 +800,7 @@ const AllCategoriesPage = () => {
                         <div className="bulkActionsBar">
                             <div className="bulkInfo">
                                 <FontAwesomeIcon icon={faSitemap} />
-                                <span>{selectedCategories.size} collections selected</span>
+                                <span>{selectedCategories.size} categories selected</span>
                             </div>
 
                             <div className="bulkControls">
@@ -847,7 +844,7 @@ const AllCategoriesPage = () => {
                         <table className="categoriesTable">
                             <thead>
                                 <tr>
-                                    <th width="50">
+                                    <th>
                                         <input
                                             type="checkbox"
                                             checked={selectedCategories.size === getFlattenedCategories(categories).length && getFlattenedCategories(categories).length > 0}
@@ -861,7 +858,6 @@ const AllCategoriesPage = () => {
                                             onClick={() => handleSort('name')}
                                         >
                                             Collection Name
-                                            <FontAwesomeIcon icon={getSortIcon('name')} />
                                         </button>
                                     </th>
                                     <th>
@@ -870,7 +866,6 @@ const AllCategoriesPage = () => {
                                             onClick={() => handleSort('products')}
                                         >
                                             Products
-                                            <FontAwesomeIcon icon={getSortIcon('products')} />
                                         </button>
                                     </th>
                                     <th>
@@ -879,7 +874,6 @@ const AllCategoriesPage = () => {
                                             onClick={() => handleSort('type')}
                                         >
                                             Type
-                                            <FontAwesomeIcon icon={getSortIcon('type')} />
                                         </button>
                                     </th>
                                     <th>
@@ -888,7 +882,6 @@ const AllCategoriesPage = () => {
                                             onClick={() => handleSort('status')}
                                         >
                                             Status
-                                            <FontAwesomeIcon icon={getSortIcon('status')} />
                                         </button>
                                     </th>
                                     <th>
@@ -897,7 +890,6 @@ const AllCategoriesPage = () => {
                                             onClick={() => handleSort('createdAt')}
                                         >
                                             Created
-                                            <FontAwesomeIcon icon={getSortIcon('createdAt')} />
                                         </button>
                                     </th>
                                     <th width="240">Actions</th>
@@ -911,7 +903,7 @@ const AllCategoriesPage = () => {
                                         <td colSpan="7">
                                             <div className="emptyState">
                                                 <FontAwesomeIcon icon={faFolder} size="3x" />
-                                                <h3>No collections found</h3>
+                                                <h3>No categories found</h3>
                                                 <p>Try adjusting your search or filters</p>
                                                 <Link href="/dashboard/add-categories" className="btnPrimary">
                                                     <FontAwesomeIcon icon={faPlus} /> Create Your First Collection
@@ -928,7 +920,7 @@ const AllCategoriesPage = () => {
                     <div className="tableFooter">
                         <div className="footerLeft">
                             <span className="itemCount">
-                                Showing {Math.min(endIndex, sortedCategories.length)} of {sortedCategories.length} collections
+                                Showing {Math.min(endIndex, sortedCategories.length)} of {sortedCategories.length} categories
                             </span>
 
                             {selectedCategories.size > 0 && !showBulkActions && (
@@ -1031,7 +1023,7 @@ const AllCategoriesPage = () => {
                                 </span>
                             </div>
                             <div className="hierarchyItem">
-                                <span className="statLabel">Featured Collections:</span>
+                                <span className="statLabel">Featured Categories:</span>
                                 <span className="statValue">
                                     {getFlattenedCategories(categories).filter(c => c.featured).length}
                                 </span>
@@ -1088,923 +1080,6 @@ const AllCategoriesPage = () => {
                     </div>
                 </div>
             </div>
-
-            <style jsx>{`
-                /* Page Header */
-                .pageHeader {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: flex-start;
-                    margin-bottom: 30px;
-                    padding-bottom: 20px;
-                    border-bottom: 2px solid #e2e8f0;
-                }
-
-                .headerLeft {
-                    flex: 1;
-                }
-
-                .pageTitle {
-                    font-size: 28px;
-                    margin: 0 0 8px 0;
-                    color: #2d3748;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
-
-                .pageSubtitle {
-                    color: #718096;
-                    margin: 0;
-                    font-size: 16px;
-                }
-
-                .btnPrimary {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 10px;
-                    padding: 12px 24px;
-                    border-radius: 8px;
-                    background: #667eea;
-                    color: white;
-                    font-weight: 500;
-                    font-size: 15px;
-                    text-decoration: none;
-                    border: none;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                .btnPrimary:hover {
-                    background: #5a6fd8;
-                }
-
-                /* Summary Cards */
-                .summaryCards {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                    gap: 20px;
-                    margin-bottom: 30px;
-                }
-
-                .summaryCard {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 25px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    transition: transform 0.3s, box-shadow 0.3s;
-                }
-
-                .summaryCard:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-                }
-
-                .cardIcon {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 12px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 24px;
-                    color: white;
-                }
-
-                .summaryCard.total .cardIcon {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                }
-
-                .summaryCard.active .cardIcon {
-                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-                }
-
-                .summaryCard.draft .cardIcon {
-                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-                }
-
-                .summaryCard.automated .cardIcon {
-                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-                }
-
-                .cardContent {
-                    flex: 1;
-                }
-
-                .cardContent h3 {
-                    margin: 0 0 8px 0;
-                    font-size: 16px;
-                    color: #718096;
-                    font-weight: 500;
-                }
-
-                .cardValue {
-                    font-size: 32px;
-                    font-weight: 700;
-                    color: #2d3748;
-                    margin-bottom: 8px;
-                }
-
-                .cardSubtext {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 4px;
-                    font-size: 13px;
-                    color: #a0aec0;
-                }
-
-                /* Main Content */
-                .categoriesMain {
-                    background: white;
-                    border-radius: 12px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-                    margin-bottom: 30px;
-                    overflow: hidden;
-                }
-
-                /* Controls Bar */
-                .controlsBar {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 20px;
-                    background: #f8fafc;
-                    border-bottom: 1px solid #e2e8f0;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                }
-
-                .controlsLeft {
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                    flex-wrap: wrap;
-                    flex: 1;
-                }
-
-                .searchBox {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    background: white;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 8px;
-                    padding: 10px 15px;
-                    min-width: 300px;
-                    flex: 1;
-                    max-width: 400px;
-                }
-
-                .searchInput {
-                    border: none;
-                    outline: none;
-                    font-size: 15px;
-                    color: #2d3748;
-                    width: 100%;
-                    background: transparent;
-                }
-
-                .filterGroup {
-                    display: flex;
-                    gap: 10px;
-                    flex-wrap: wrap;
-                }
-
-                .filterSelect {
-                    padding: 10px 15px;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 8px;
-                    font-size: 14px;
-                    color: #4a5568;
-                    background: white;
-                    min-width: 150px;
-                    cursor: pointer;
-                }
-
-                .controlsRight {
-                    display: flex;
-                    gap: 15px;
-                    flex-wrap: wrap;
-                }
-
-                .viewControls, .exportControls {
-                    display: flex;
-                    gap: 10px;
-                }
-
-                .viewBtn, .exportBtn, .importBtn {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 10px 15px;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 8px;
-                    background: white;
-                    color: #4a5568;
-                    font-size: 14px;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                .viewBtn:hover, .exportBtn:hover, .importBtn:hover {
-                    background: #f8fafc;
-                    border-color: #cbd5e0;
-                }
-
-                /* Bulk Actions */
-                .bulkActionsBar {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 15px 20px;
-                    background: #e6f3ff;
-                    border-bottom: 1px solid #b3d9ff;
-                }
-
-                .bulkInfo {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    font-weight: 500;
-                    color: #0066cc;
-                }
-
-                .bulkControls {
-                    display: flex;
-                    gap: 10px;
-                    align-items: center;
-                }
-
-                .bulkSelect {
-                    padding: 10px 15px;
-                    border: 1px solid #b3d9ff;
-                    border-radius: 6px;
-                    background: white;
-                    min-width: 200px;
-                }
-
-                .bulkApplyBtn, .bulkCancelBtn {
-                    padding: 10px 20px;
-                    border-radius: 6px;
-                    font-weight: 500;
-                    cursor: pointer;
-                    border: none;
-                }
-
-                .bulkApplyBtn {
-                    background: #0066cc;
-                    color: white;
-                }
-
-                .bulkApplyBtn:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                }
-
-                .bulkCancelBtn {
-                    background: #e2e8f0;
-                    color: #4a5568;
-                }
-
-                /* Categories Table */
-                .categoriesTableWrapper {
-                    overflow-x: auto;
-                }
-
-                .categoriesTable {
-                    width: 100%;
-                    border-collapse: collapse;
-                    min-width: 1000px;
-                }
-
-                .categoriesTable thead th {
-                    background: #f8fafc;
-                    padding: 15px 20px;
-                    text-align: left;
-                    font-weight: 600;
-                    color: #4a5568;
-                    border-bottom: 1px solid #e2e8f0;
-                    white-space: nowrap;
-                }
-
-                .sortableHeader {
-                    background: none;
-                    border: none;
-                    font: inherit;
-                    color: inherit;
-                    font-weight: inherit;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    cursor: pointer;
-                    padding: 0;
-                }
-
-                .selectAllCheckbox {
-                    width: 18px;
-                    height: 18px;
-                    cursor: pointer;
-                }
-
-                /* Category Row Styles */
-                .category-row {
-                    transition: background 0.3s;
-                }
-
-                .category-row:hover {
-                    background: #f8fafc;
-                }
-
-                .category-row.selected {
-                    background: #f0f9ff;
-                }
-
-                .category-select {
-                    padding: 0 20px;
-                }
-
-                .category-checkbox {
-                    width: 18px;
-                    height: 18px;
-                    cursor: pointer;
-                }
-
-                .category-name-cell {
-                    padding: 15px 20px;
-                }
-
-                .category-name-content {
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                }
-
-                .expand-btn {
-                    background: none;
-                    border: none;
-                    color: #cbd5e0;
-                    cursor: pointer;
-                    width: 24px;
-                    height: 24px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-shrink: 0;
-                }
-
-                .expand-btn:hover {
-                    color: #667eea;
-                }
-
-                .expand-placeholder {
-                    width: 24px;
-                    flex-shrink: 0;
-                }
-
-                .category-image {
-                    width: 48px;
-                    height: 48px;
-                    border-radius: 8px;
-                    overflow: hidden;
-                    border: 1px solid #e2e8f0;
-                    flex-shrink: 0;
-                    background: #f8fafc;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .category-image-placeholder {
-                    color: #cbd5e0;
-                    font-size: 20px;
-                }
-
-                .category-image img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-
-                .category-info {
-                    flex: 1;
-                    min-width: 0;
-                }
-
-                .category-title {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin-bottom: 6px;
-                    flex-wrap: wrap;
-                }
-
-                .category-name {
-                    font-weight: 600;
-                    color: #2d3748;
-                    font-size: 16px;
-                }
-
-                .featured-badge, .automated-badge, .subcategory-label {
-                    padding: 4px 10px;
-                    border-radius: 12px;
-                    font-size: 11px;
-                    font-weight: 600;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 4px;
-                }
-
-                .featured-badge {
-                    background: #fff7ed;
-                    color: #9c4221;
-                    border: 1px solid #fed7aa;
-                }
-
-                .automated-badge {
-                    background: #f0f9ff;
-                    color: #0369a1;
-                    border: 1px solid #bae6fd;
-                }
-
-                .subcategory-label {
-                    background: #f5f3ff;
-                    color: #5b21b6;
-                    border: 1px solid #ddd6fe;
-                }
-
-                .category-meta {
-                    display: flex;
-                    gap: 15px;
-                    font-size: 13px;
-                    color: #718096;
-                    flex-wrap: wrap;
-                    align-items: center;
-                }
-
-                .category-handle {
-                    color: #667eea;
-                    font-weight: 500;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                }
-
-                .category-description {
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    max-width: 300px;
-                }
-
-                .category-products {
-                    padding: 15px 20px;
-                    min-width: 120px;
-                }
-
-                .products-count {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-weight: 600;
-                    color: #4a5568;
-                    margin-bottom: 8px;
-                }
-
-                .products-progress {
-                    height: 6px;
-                    background: #e2e8f0;
-                    border-radius: 3px;
-                    overflow: hidden;
-                }
-
-                .progress-bar {
-                    height: 100%;
-                    background: linear-gradient(90deg, #667eea, #764ba2);
-                    border-radius: 3px;
-                }
-
-                /* Badges */
-                .type-badge, .status-badge {
-                    padding: 8px 14px;
-                    border-radius: 20px;
-                    font-size: 13px;
-                    font-weight: 600;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    min-width: 100px;
-                    justify-content: center;
-                }
-
-                .type-badge.manual {
-                    background: #f0f9ff;
-                    color: #0369a1;
-                    border: 1px solid #bae6fd;
-                }
-
-                .type-badge.automated {
-                    background: #f0fdf4;
-                    color: #166534;
-                    border: 1px solid #bbf7d0;
-                }
-
-                .status-badge.active {
-                    background: #f0fdf4;
-                    color: #166534;
-                    border: 1px solid #bbf7d0;
-                }
-
-                .status-badge.draft {
-                    background: #fefce8;
-                    color: #854d0e;
-                    border: 1px solid #fef08a;
-                }
-
-                .status-badge.archived {
-                    background: #f5f5f5;
-                    color: #525252;
-                    border: 1px solid #e5e5e5;
-                }
-
-                .category-date {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-size: 14px;
-                    color: #718096;
-                    padding: 15px 20px;
-                    min-width: 120px;
-                }
-
-                /* Actions */
-                .category-actions {
-                    display: flex;
-                    gap: 8px;
-                    padding: 15px 20px;
-                }
-
-                .action-btn {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    padding: 8px 12px;
-                    border-radius: 6px;
-                    font-size: 14px;
-                    font-weight: 500;
-                    text-decoration: none;
-                    transition: all 0.3s;
-                    border: none;
-                    cursor: pointer;
-                }
-
-                .action-btn.edit {
-                    background: #e0e7ff;
-                    color: #3730a3;
-                }
-
-                .action-btn.edit:hover {
-                    background: #c7d2fe;
-                }
-
-                .action-btn.duplicate {
-                    background: #f0f9ff;
-                    color: #0369a1;
-                }
-
-                .action-btn.duplicate:hover {
-                    background: #dbeafe;
-                }
-
-                .action-btn.delete {
-                    background: #fee2e2;
-                    color: #991b1b;
-                }
-
-                .action-btn.delete:hover {
-                    background: #fecaca;
-                }
-
-                .action-btn.more {
-                    background: #f3f4f6;
-                    color: #6b7280;
-                    padding: 8px 10px;
-                }
-
-                /* Empty State */
-                .emptyState {
-                    text-align: center;
-                    padding: 60px 20px;
-                    color: #a0aec0;
-                }
-
-                .emptyState h3 {
-                    margin: 20px 0 10px;
-                    color: #4a5568;
-                    font-size: 20px;
-                }
-
-                .emptyState p {
-                    margin-bottom: 20px;
-                    font-size: 15px;
-                }
-
-                /* Table Footer */
-                .tableFooter {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 20px;
-                    border-top: 1px solid #e2e8f0;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                }
-
-                .footerLeft {
-                    display: flex;
-                    align-items: center;
-                    gap: 15px;
-                }
-
-                .itemCount {
-                    color: #718096;
-                    font-size: 14px;
-                }
-
-                .bulkSelectBtn {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 8px 16px;
-                    background: #e0e7ff;
-                    color: #3730a3;
-                    border: none;
-                    border-radius: 6px;
-                    font-size: 14px;
-                    font-weight: 500;
-                    cursor: pointer;
-                }
-
-                .footerRight {
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                }
-
-                .pagination {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
-
-                .paginationBtn {
-                    padding: 8px 16px;
-                    border: 1px solid #e2e8f0;
-                    background: white;
-                    border-radius: 6px;
-                    color: #4a5568;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    font-size: 14px;
-                }
-
-                .paginationBtn:hover:not(:disabled) {
-                    background: #f8fafc;
-                }
-
-                .paginationBtn:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                }
-
-                .pageNumbers {
-                    display: flex;
-                    gap: 5px;
-                }
-
-                .pageBtn {
-                    width: 36px;
-                    height: 36px;
-                    border: 1px solid #e2e8f0;
-                    background: white;
-                    border-radius: 6px;
-                    color: #4a5568;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    font-size: 14px;
-                }
-
-                .pageBtn.active {
-                    background: #667eea;
-                    color: white;
-                    border-color: #667eea;
-                }
-
-                .perPageSelector {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    color: #718096;
-                    font-size: 14px;
-                }
-
-                .perPageSelect {
-                    padding: 8px 12px;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 6px;
-                    background: white;
-                    font-size: 14px;
-                }
-
-                /* Quick Stats */
-                .quickStats {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                    gap: 20px;
-                    margin-top: 30px;
-                }
-
-                .statsCard {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 25px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-                }
-
-                .statsCard h3 {
-                    margin: 0 0 20px 0;
-                    color: #2d3748;
-                    font-size: 18px;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
-
-                .hierarchyStats {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 12px;
-                }
-
-                .hierarchyItem {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-
-                .statLabel {
-                    color: #718096;
-                    font-size: 14px;
-                }
-
-                .statValue {
-                    font-weight: 600;
-                    color: #2d3748;
-                    font-size: 16px;
-                }
-
-                .activityList {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                }
-
-                .activityItem {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    font-size: 14px;
-                    color: #4a5568;
-                }
-
-                .activityItem svg {
-                    color: #667eea;
-                }
-
-                .quickActionsList {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 10px;
-                }
-
-                .quickAction {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 12px;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 8px;
-                    background: #f8fafc;
-                    color: #4a5568;
-                    text-decoration: none;
-                    font-size: 14px;
-                    transition: all 0.3s;
-                    cursor: pointer;
-                    border: none;
-                }
-
-                .quickAction:hover {
-                    background: #edf2f7;
-                    border-color: #cbd5e0;
-                }
-
-                /* Responsive */
-                @media (max-width: 1200px) {
-                    .controlsBar {
-                        flex-direction: column;
-                        align-items: stretch;
-                    }
-                    
-                    .controlsLeft, .controlsRight {
-                        width: 100%;
-                    }
-                    
-                    .searchBox {
-                        max-width: none;
-                    }
-                    
-                    .tableFooter {
-                        flex-direction: column;
-                        align-items: stretch;
-                    }
-                    
-                    .footerRight {
-                        width: 100%;
-                        justify-content: space-between;
-                    }
-                }
-
-                @media (max-width: 768px) {
-                    .pageHeader {
-                        flex-direction: column;
-                        gap: 20px;
-                    }
-                    
-                    .summaryCards {
-                        grid-template-columns: 1fr;
-                    }
-                    
-                    .filterGroup {
-                        flex-direction: column;
-                        width: 100%;
-                    }
-                    
-                    .filterSelect {
-                        width: 100%;
-                    }
-                    
-                    .controlsRight {
-                        flex-direction: column;
-                        width: 100%;
-                    }
-                    
-                    .viewControls, .exportControls {
-                        width: 100%;
-                        justify-content: space-between;
-                    }
-                    
-                    .category-meta {
-                        flex-direction: column;
-                        gap: 5px;
-                    }
-                    
-                    .category-actions {
-                        flex-wrap: wrap;
-                    }
-                    
-                    .quickStats {
-                        grid-template-columns: 1fr;
-                    }
-                    
-                    .quickActionsList {
-                        grid-template-columns: 1fr;
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .category-title {
-                        flex-direction: column;
-                        align-items: flex-start;
-                        gap: 5px;
-                    }
-                    
-                    .category-actions {
-                        flex-direction: column;
-                    }
-                    
-                    .action-btn {
-                        width: 100%;
-                        justify-content: center;
-                    }
-                    
-                    .footerRight {
-                        flex-direction: column;
-                        gap: 10px;
-                    }
-                }
-            `}</style>
         </Layout>
     );
 };

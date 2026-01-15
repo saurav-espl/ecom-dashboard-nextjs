@@ -865,24 +865,6 @@ const AddCategoriesPage = () => {
 
             <style jsx>{`
 
-        .pageHeader {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 30px;
-          padding-bottom: 20px;
-          border-bottom: 2px solid #e2e8f0;
-        }
-
-        .pageTitle {
-          font-size: 28px;
-          margin: 0;
-          color: #2d3748;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
         .categoriesContainer {
           display: flex;
           flex-direction: column;
@@ -1296,12 +1278,6 @@ const AddCategoriesPage = () => {
         }
 
         @media (max-width: 768px) {
-          .pageHeader {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-          }
-
           .createCategorySection{
             padding: 20px;
           }
