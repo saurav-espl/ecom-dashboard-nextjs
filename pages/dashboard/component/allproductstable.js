@@ -32,7 +32,7 @@ const AllProducDataTable = ({ data }) => {
                 {data.map((product) => (
                     <tr key={product.id}>
                         <td>{product.id}</td>
-                        <td>{product.name}</td>
+                        <td>{product.title}</td>
                         <td>{product.type}</td>
                         <td>{product.sku}</td>
                         <td>Rs.{product.price}</td>

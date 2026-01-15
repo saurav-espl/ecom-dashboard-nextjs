@@ -13,11 +13,21 @@ const dummyProducts = [
 ];
 
 const AllProductsPage = () => {
+
+    const [products, setProducts] = React.useState(dummyProducts);
+
+    React.useEffect(() => {
+        fetch("/api/products")
+            .then((res) => res.json())
+            .then((data) => setProducts(data))
+            .catch((error) => console.error("Error fetching products:", error));
+    }, []);
+
     return (
         <Layout>
             <div className="dashContent">
                 <h1 className="pageTitle">All Products</h1>
-                <AllProducDataTable data={dummyProducts} />
+                <AllProducDataTable data={products} />
             </div>
         </Layout>
     );
