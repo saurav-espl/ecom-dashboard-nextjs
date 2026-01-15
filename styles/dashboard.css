@@ -677,7 +677,7 @@ input#dt-search-0 {
 }
 
 .expand-btn:hover {
-  color: #667eea;
+  color: #000000;
 }
 
 .expand-placeholder {
@@ -766,7 +766,7 @@ input#dt-search-0 {
 }
 
 .category-handle {
-  color: #667eea;
+  color: #000000;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -803,7 +803,7 @@ input#dt-search-0 {
 
 .progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #000000, #764ba2);
   border-radius: 3px;
 }
 
@@ -1034,9 +1034,9 @@ input#dt-search-0 {
 }
 
 .pageBtn.active {
-  background: #667eea;
+  background: #000000;
   color: white;
-  border-color: #667eea;
+  border-color: #000000;
 }
 
 .perPageSelector {
@@ -1117,7 +1117,7 @@ input#dt-search-0 {
 }
 
 .activityItem svg {
-  color: #667eea;
+  color: #000000;
 }
 
 .quickActionsList {
@@ -1153,7 +1153,7 @@ input#dt-search-0 {
   gap: 10px;
   padding: 12px 24px;
   border-radius: 8px;
-  background: #667eea;
+  background: #000000;
   color: white;
   font-weight: 500;
   font-size: 15px;
@@ -1217,7 +1217,7 @@ input#dt-search-0 {
 }
 
 .summaryCard.total .cardIcon {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
 }
 
 .summaryCard.active .cardIcon {
@@ -1586,7 +1586,7 @@ input#dt-search-0 {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 15px 20px;
+  padding: 8px 12px;
 }
 
 .product-image {
@@ -1658,7 +1658,7 @@ input#dt-search-0 {
 }
 
 .product-categories {
-  color: #667eea;
+  color: #000000;
 }
 
 /* SKU */
@@ -1666,10 +1666,10 @@ input#dt-search-0 {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Courier New', monospace;
   font-size: 14px;
   color: #4a5568;
-  padding: 15px 20px;
+  padding: 8px 12px;
+  min-width: 100px;
 }
 
 /* Price */
@@ -1680,7 +1680,7 @@ input#dt-search-0 {
   font-weight: 700;
   font-size: 16px;
   color: #2d3748;
-  padding: 15px 20px;
+  padding: 8px 12px;
 }
 
 /* Stock Status */
@@ -1692,7 +1692,7 @@ input#dt-search-0 {
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
-  padding: 15px 20px;
+  min-width: 140px;
 }
 
 .stock-status.in-stock {
@@ -1768,7 +1768,7 @@ input#dt-search-0 {
 .product-actions {
   display: flex;
   gap: 8px;
-  padding: 15px 20px;
+  padding: 8px 12px;
 }
 
 /* Responsive */

@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 
 // FontAwesome Fix
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 

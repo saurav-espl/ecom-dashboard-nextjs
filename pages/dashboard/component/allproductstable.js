@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faBox,
     faRupeeSign,
-    faBarcode,
-    faEye,
     faEdit,
     faTrash,
     faCopy,
@@ -68,7 +66,7 @@ const AllProducDataTable = ({
                             onClick={() => onSort('title')}
                         >
                             Product
-                            <FontAwesomeIcon icon={getSortIcon('title')} />
+                            {/* <FontAwesomeIcon icon={getSortIcon('title')} /> */}
                         </button>
                     </th>
                     <th>
@@ -77,7 +75,7 @@ const AllProducDataTable = ({
                             onClick={() => onSort('sku')}
                         >
                             SKU
-                            <FontAwesomeIcon icon={getSortIcon('sku')} />
+                            {/* <FontAwesomeIcon icon={getSortIcon('sku')} /> */}
                         </button>
                     </th>
                     <th>
@@ -86,7 +84,7 @@ const AllProducDataTable = ({
                             onClick={() => onSort('price')}
                         >
                             Price
-                            <FontAwesomeIcon icon={getSortIcon('price')} />
+                            {/* <FontAwesomeIcon icon={getSortIcon('price')} /> */}
                         </button>
                     </th>
                     <th>
@@ -95,7 +93,7 @@ const AllProducDataTable = ({
                             onClick={() => onSort('stock')}
                         >
                             Stock
-                            <FontAwesomeIcon icon={getSortIcon('stock')} />
+                            {/* <FontAwesomeIcon icon={getSortIcon('stock')} /> */}
                         </button>
                     </th>
                     <th>
@@ -104,7 +102,7 @@ const AllProducDataTable = ({
                             onClick={() => onSort('type')}
                         >
                             Type
-                            <FontAwesomeIcon icon={getSortIcon('type')} />
+                            {/* <FontAwesomeIcon icon={getSortIcon('type')} /> */}
                         </button>
                     </th>
                     <th>
@@ -113,7 +111,7 @@ const AllProducDataTable = ({
                             onClick={() => onSort('status')}
                         >
                             Status
-                            <FontAwesomeIcon icon={getSortIcon('status')} />
+                            {/* <FontAwesomeIcon icon={getSortIcon('status')} /> */}
                         </button>
                     </th>
                     <th width="240">Actions</th>
@@ -168,13 +166,12 @@ const AllProducDataTable = ({
                                 </td>
                                 <td>
                                     <div className="product-sku">
-                                        <FontAwesomeIcon icon={faBarcode} />
                                         <span>{product.sku}</span>
                                     </div>
                                 </td>
                                 <td>
                                     <div className="product-price">
-                                        <FontAwesomeIcon icon={faRupeeSign} />
+                                        {/* <FontAwesomeIcon icon={faRupeeSign} /> */}
                                         <span>{formatPrice(product.price)}</span>
                                     </div>
                                 </td>

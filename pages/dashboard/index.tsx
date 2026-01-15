@@ -507,7 +507,7 @@ export default function Dashboard({ user, dashboardData }) {
         }
 
         .statIcon.sales {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
         }
 
         .statIcon.orders {
@@ -597,7 +597,7 @@ export default function Dashboard({ user, dashboardData }) {
         }
 
         .viewAll {
-          color: #667eea;
+          color: #000000;
           text-decoration: none;
           font-weight: 500;
           font-size: 14px;
@@ -668,7 +668,7 @@ export default function Dashboard({ user, dashboardData }) {
 
         .dateInput:focus {
           outline: none;
-          border-color: #667eea;
+          border-color: #000000;
           box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
@@ -684,7 +684,7 @@ export default function Dashboard({ user, dashboardData }) {
         }
 
         .filterBtn {
-          background: #667eea;
+          background: #000000;
           color: white;
           font-family: inherit;
         }
@@ -739,20 +739,20 @@ export default function Dashboard({ user, dashboardData }) {
           margin: 0 2px;
           border: 1px solid #e2e8f0;
           border-radius: 6px;
-          color: #667eea;
+          color: #000000;
           cursor: pointer;
         }
 
         :global(.paginate_button:hover) {
-          background: #667eea;
+          background: #000000;
           color: white;
-          border-color: #667eea;
+          border-color: #000000;
         }
 
         :global(.paginate_button.current) {
-          background: #667eea;
+          background: #000000;
           color: white;
-          border-color: #667eea;
+          border-color: #000000;
         }
 
         /* Status Badges */
@@ -872,14 +872,14 @@ export default function Dashboard({ user, dashboardData }) {
         .actionCard:hover {
           transform: translateY(-3px);
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-          border-color: #667eea;
+          border-color: #000000;
         }
 
         .actionIcon {
           width: 50px;
           height: 50px;
           border-radius: 12px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
           display: flex;
           align-items: center;
           justify-content: center;

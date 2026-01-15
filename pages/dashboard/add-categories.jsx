@@ -948,7 +948,7 @@ const AddCategoriesPage = () => {
 
         .formInput:focus, .formSelect:focus, .formTextarea:focus {
           outline: none;
-          border-color: #667eea;
+          border-color: #000000;
           box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
@@ -1029,7 +1029,7 @@ const AddCategoriesPage = () => {
         }
 
         .imageUploadArea:hover {
-          border-color: #667eea;
+          border-color: #000000;
           background: rgba(102, 126, 234, 0.05);
         }
 
@@ -1102,7 +1102,7 @@ const AddCategoriesPage = () => {
         }
 
         .expandBtn:hover {
-          color: #667eea;
+          color: #000000;
         }
 
         .categoryImage {
@@ -1152,7 +1152,7 @@ const AddCategoriesPage = () => {
         }
 
         .categoryHandle {
-          color: #667eea;
+          color: #000000;
           font-size: 12px;
           display: flex;
           align-items: center;
@@ -1220,8 +1220,8 @@ const AddCategoriesPage = () => {
         }
 
         .btnAddCondition:hover {
-          border-color: #667eea;
-          color: #667eea;
+          border-color: #000000;
+          color: #000000;
           background: rgba(102, 126, 234, 0.05);
         }
 

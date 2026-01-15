@@ -454,7 +454,7 @@ const AllProductsPage = () => {
                         </p>
                     </div>
                     <div className="headerRight">
-                        <Link href="/dashboard/add-product" className="btnPrimary">
+                        <Link href="/dashboard/add-products" className="btnPrimary">
                             <FontAwesomeIcon icon={faPlus} /> Add Product
                         </Link>
                     </div>
@@ -813,7 +813,7 @@ const AllProductsPage = () => {
                                     <FontAwesomeIcon icon={faArrowRight} /> Quick Actions
                                 </h3>
                                 <div className="quickActionsList">
-                                    <Link href="/dashboard/add-product" className="quickAction">
+                                    <Link href="/dashboard/add-products" className="quickAction">
                                         <FontAwesomeIcon icon={faPlus} />
                                         <span>Add Product</span>
                                     </Link>
