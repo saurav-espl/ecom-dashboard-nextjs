@@ -140,8 +140,8 @@ const AllProducDataTable = ({
                                 <td>
                                     <div className="product-info">
                                         <div className="product-image">
-                                            {product.image ? (
-                                                <img src={product.image} alt={product.title} />
+                                            {product.featuredImage ? (
+                                                <img src={product.featuredImage} alt={product.title} />
                                             ) : (
                                                 <div className="product-image-placeholder">
                                                     <FontAwesomeIcon icon={faBox} />
@@ -160,7 +160,7 @@ const AllProducDataTable = ({
                                             <div className="product-meta">
                                                 <span className="product-vendor">By {product.vendor}</span>
                                                 <span className="product-categories">
-                                                    {product.categories.join(', ')}
+                                                    {product.categories?.join(', ')}
                                                 </span>
                                             </div>
                                         </div>
@@ -181,22 +181,23 @@ const AllProducDataTable = ({
                                 <td>
                                     <div className={`stock-status ${stockStatus.class}`}>
                                         <span>{stockStatus.text}</span>
-                                        <span className="stock-count">({product.stock})</span>
+                                        <span className="stock-count">({product.quantity})</span>
                                     </div>
                                 </td>
                                 <td>
-                                    <span className={`type-badge ${product.type.toLowerCase()}`}>
-                                        {product.type}
+                                    <span className={`type-badge ${product.hasVariants ? 'Variant'.toLocaleLowerCase() : 'Simple'.toLocaleLowerCase()}`}>
+                                        {product.hasVariants ? 'Variants' : 'Simple'}
                                     </span>
                                 </td>
                                 <td>
                                     <span className={`status-badge ${product.status.toLowerCase()}`}>
-                                        {product.status === 'Publish' ? (
+                                        {product.status === 'active' ? (
                                             <FontAwesomeIcon icon={faCheckCircle} />
                                         ) : (
                                             <FontAwesomeIcon icon={faTimesCircle} />
                                         )}
-                                        {product.status}
+                                        {/* {product.status} */}
+                                         {product.status === 'active' ? "Published": product.status == "archived"? "Archived" : "Draft"}
                                     </span>
                                 </td>
                                 <td>
