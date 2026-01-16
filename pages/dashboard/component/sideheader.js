@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import {
   faDashboard,
   faContactBook,
@@ -82,7 +83,10 @@ const SideHeader = ({ isOpen, handleCloseSidebar, currentPage }) => {
   return (
     <aside className={`sidebar ${isOpen ? "open" : ""}`}>
       <div className="logo">
-        <Link href="/">Your Logo</Link>
+        <Link href="/">
+          {/* <h2>MyDashboard</h2> */}
+          <Image src="/assets/lorem-ipsum-logo.png" alt="Logo" width={200} height={50} />
+        </Link>
         <button
           className="close-button"
           width="15"

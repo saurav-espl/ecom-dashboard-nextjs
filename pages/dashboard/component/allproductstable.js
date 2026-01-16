@@ -49,7 +49,7 @@ const AllProducDataTable = ({
     };
 
     return (
-        <table className="productsTable">
+        <table className="dashboardTable">
             <thead>
                 <tr>
                     <th width="50">
@@ -124,19 +124,19 @@ const AllProducDataTable = ({
                         const isSelected = selectedProducts.has(product.id);
 
                         return (
-                            <tr key={product.id} className={`product-row ${isSelected ? 'selected' : ''}`}>
+                            <tr key={product.id} className={`dashboard-table-row ${isSelected ? 'selected' : ''}`}>
                                 <td>
-                                    <div className="product-select">
+                                    <div className="dashboard-table-select">
                                         <input
                                             type="checkbox"
                                             checked={isSelected}
                                             onChange={(e) => onSelectProduct(product.id, e.target.checked)}
-                                            className="product-checkbox"
+                                            className="dashboard-table-checkbox"
                                         />
                                     </div>
                                 </td>
                                 <td>
-                                    <div className="product-info">
+                                    <div className="dashboard-table-info">
                                         <div className="product-image">
                                             {product.featuredImage ? (
                                                 <img src={product.featuredImage} alt={product.title} />
@@ -146,7 +146,7 @@ const AllProducDataTable = ({
                                                 </div>
                                             )}
                                         </div>
-                                        <div className="product-details">
+                                        <div className="dashboard-table-details">
                                             <div className="product-title">
                                                 <span className="product-name">{product.title}</span>
                                                 {product.featured && (
@@ -155,7 +155,7 @@ const AllProducDataTable = ({
                                                     </span>
                                                 )}
                                             </div>
-                                            <div className="product-meta">
+                                            <div className="dashboard-table-meta">
                                                 <span className="product-vendor">By {product.vendor}</span>
                                                 <span className="product-categories">
                                                     {product.categories?.join(', ')}
@@ -170,7 +170,7 @@ const AllProducDataTable = ({
                                     </div>
                                 </td>
                                 <td>
-                                    <div className="product-price">
+                                    <div className="dashboard-table-price">
                                         {/* <FontAwesomeIcon icon={faRupeeSign} /> */}
                                         <span>{formatPrice(product.price)}</span>
                                     </div>
@@ -198,7 +198,7 @@ const AllProducDataTable = ({
                                     </span>
                                 </td>
                                 <td>
-                                    <div className="product-actions">
+                                    <div className="dashboard-table-actions">
                                         <Link href={`/dashboard/products/edit/${product.id}`} className="action-btn edit">
                                             <FontAwesomeIcon icon={faEdit} />
                                             <span>Edit</span>
